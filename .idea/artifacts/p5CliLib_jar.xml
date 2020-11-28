@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="p5CliLib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/p5CliLib_jar</output-path>
+    <root id="archive" name="p5CliLib.jar">
+      <element id="module-output" name="p5CliLib" />
+    </root>
+  </artifact>
+</component>
