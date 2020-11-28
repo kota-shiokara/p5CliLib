@@ -1,1 +1,2 @@
 # p5CliLib
+processingでCLIもどきを作るためのライブラリ
