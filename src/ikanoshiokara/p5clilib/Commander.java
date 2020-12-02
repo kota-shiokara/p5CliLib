@@ -3,8 +3,9 @@ package ikanoshiokara.p5clilib;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class Commander implements Ls{
+public class Commander implements ListSegments, Kirby{
     private String current;
     Commander(String _current){
         current = _current;
@@ -18,6 +19,7 @@ public class Commander implements Ls{
         return current;
     }
 
+    //region ListSegments
     public String ls(){
         List<String> fileList = new ArrayList<String>();
         File array[];
@@ -55,4 +57,45 @@ public class Commander implements Ls{
         }
         return String.join(" ", fileList);
     }
+    //endregion
+
+    //region Kirby
+    public String kirby(){
+        int num = new Random().nextInt(2);
+        switch (num){
+            case 1:
+                return "─────────██████████──████────\n" +
+                        "────────████▒▒░░░░░░░░██▒▒░░██──\n" +
+                        "──────██▒▒░░░░██░░██░░░░██░░░░██\n" +
+                        "────██▒▒░░░░░░██░░██░░░░░░▒▒░░██\n" +
+                        "────██░░░░░░░░██░░██░░░░░░▒▒▒▒██\n" +
+                        "──██░░░░░░▒▒▒▒░░░░░░▒▒▒▒░░░░▒▒██\n" +
+                        "██▒▒░░░░░░░░░░░░██░░░░░░░░░░░░██\n" +
+                        "██░░░░▒▒░░░░░░░░██░░░░░░░░░░▒▒██\n" +
+                        "██░░░░▒▒░░░░░░░░░░░░░░░░░░░░██──\n" +
+                        "──██████░░░░░░░░░░░░░░░░░░▒▒██──\n" +
+                        "██▒▒▒▒▒▒██░░░░░░░░░░░░░░░░▒▒██──\n" +
+                        "██▒▒▒▒▒▒▒▒██░░░░░░░░░░░░▒▒██────\n" +
+                        "██▒▒▒▒▒▒▒▒██░░░░░░░░░░▒▒████────\n" +
+                        "-██▒▒▒▒▒▒▒▒██▒▒▒▒▒▒████▒▒▒▒██──\n" +
+                        "──██▒▒▒▒██████████▒▒▒▒▒▒▒▒▒▒██\n" +
+                        "────██████──────████████████──";
+            default:
+                return "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⣶⣀⣀⣶⣄⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⢀⡠⣔⠮⠍⠛⠒⠒⠒⠚⠠⠽⣉⠙⠻⢿⣿⣿⣷⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⣠⡂⠕⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠢⢀⡹⠛⠋⠑⡄⠀⠀⠀\n" +
+                        "⠀⣀⣀⣠⣼⠏⠀⠀⠀⠀⠀⠀⠀⠜⠑⣄⠀⠀⠀⠀⠀⠠⠊⠀⠀⠀⠀⣷⠀⠀⠀\n" +
+                        "⣿⣿⣿⣿⡏⠀⠀⠀⢸⠉⢆⠀⠀⢸⣀⣸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡏⠀⠀⠀\n" +
+                        "⣿⣿⣿⣿⠃⠀⠀⠀⠸⣄⣸⡆⠀⠈⢿⣿⣿⠀⣠⣴⣶⣶⡄⠀⢀⣤⣾⣇⣀⣀⡀\n" +
+                        "⣿⣿⣿⣿⣦⣄⠀⠀⠀⢻⣿⣿⠀⠀⠈⠻⡿⠀⠘⠛⠛⠋⠁⠸⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⡿⢿⣿⣿⣷⢀⣀⠀⠻⠿⢀⣴⣶⣶⡆⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣦⣤⠛⣿⣿⣿⡿⠃⠀⠀⠹⣿⣿⣿⠇⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣦⡈⣿⣿⠇⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃\n" +
+                        "⠉⠻⣿⣿⣿⣿⣿⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀\n" +
+                        "⠀⠀⠀⠀⠛⢿⣿⣿⣿⣷⢦⣄⣀⡀⠤⣤⣤⣀⣀⣬⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀\n" +
+                        "⠀⠀⠀⢠⣴⣿⣿⣿⣿⣿⣦⣭⣷⣶⣿⣿⡿⠿⠟⠋⠁⠉⠛⠛⠿⠋⠁";
+        }
+    }
+    //endregion
 }

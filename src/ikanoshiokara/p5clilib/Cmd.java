@@ -1,11 +1,17 @@
 package ikanoshiokara.p5clilib;
 
+/*
+* @author kota-shiokara
+* @version 0.3.0
+*/
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Cmd{
     private String currentDirectory;
+    private final String VERSION = "v0.3.0";
 
     public Cmd(String firstDirectory){
         this.currentDirectory = firstDirectory;
@@ -19,7 +25,14 @@ public class Cmd{
         this.currentDirectory = nextDirectory;
     }
 
+    public String getVERSION() {
+        return VERSION;
+    }
+
     public String cmd(String command){
+        if(command.equals("version")){
+            return "P5CliLib version: " + getVERSION();
+        }
         try{
             Class<?> c = Commander.class;
             Constructor constructor = c.getDeclaredConstructor(String.class);
@@ -28,8 +41,7 @@ public class Cmd{
             return m.invoke(obj).toString();
         } catch (NoSuchMethodException e){
             e.printStackTrace();
-            // "\"" + command + "\" is not found.";
-            return "Error: " + e.toString();
+            return "\"" + command + "\" is not found.";
         } catch (IllegalAccessException e){
             e.printStackTrace();
             return "Error: " + e.toString();
@@ -54,8 +66,7 @@ public class Cmd{
             return m.invoke(obj, option).toString();
         } catch (NoSuchMethodException e){
             e.printStackTrace();
-            // "\"" + command + "\" is not found.";
-            return "Error: " + e.toString();
+            return "\"" + command + "\" is not found.";
         } catch (IllegalAccessException e){
             e.printStackTrace();
             return "Error: " + e.toString();
@@ -69,17 +80,5 @@ public class Cmd{
             e.printStackTrace();
             return "Error: " + e.toString();
         }
-    }
-
-    public static String toUpperCaseFirst(String str) {
-        char[] arr = str.toCharArray();
-        arr[0] = Character.toUpperCase(arr[0]);
-        return new String(arr);
-    }
-
-    public static String toLowerCaseFirst(String str){
-        char[] arr = str.toCharArray();
-        arr[0] = Character.toLowerCase(arr[0]);
-        return new String(arr);
     }
 }
