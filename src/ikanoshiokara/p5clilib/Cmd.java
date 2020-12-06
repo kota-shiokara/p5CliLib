@@ -8,10 +8,12 @@ package ikanoshiokara.p5clilib;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Collection;
 
 public class Cmd{
     private String currentDirectory;
-    private final String VERSION = "v0.3.0";
+    private final String VERSION = "v0.4.0";
 
     public Cmd(String firstDirectory){
         this.currentDirectory = firstDirectory;
@@ -38,7 +40,10 @@ public class Cmd{
             Constructor constructor = c.getDeclaredConstructor(String.class);
             Object obj = constructor.newInstance(currentDirectory);
             Method m = c.getMethod(command);
-            return m.invoke(obj).toString();
+            String response = m.invoke(obj).toString();
+            this.currentDirectory = response.substring(0,response.indexOf("\n"));
+            response = response.substring(response.indexOf("\n") + 1);
+            return response;
         } catch (NoSuchMethodException e){
             e.printStackTrace();
             return "\"" + command + "\" is not found.";
@@ -57,13 +62,16 @@ public class Cmd{
         }
     }
 
-    public String cmd(String command, String[] option){
+    public String cmd(String command, String options){
         try{
             Class<?> c = Commander.class;
             Constructor constructor = c.getDeclaredConstructor(String.class);
             Object obj = constructor.newInstance(currentDirectory);
-            Method m = c.getMethod(command + "WithOption");
-            return m.invoke(obj, option).toString();
+            Method m = c.getMethod(command + "WithOption", String.class);
+            String response = m.invoke(obj, options).toString();
+            this.currentDirectory = response.substring(0,response.indexOf("\n"));
+            response = response.substring(response.indexOf("\n") + 1);
+            return response;
         } catch (NoSuchMethodException e){
             e.printStackTrace();
             return "\"" + command + "\" is not found.";
