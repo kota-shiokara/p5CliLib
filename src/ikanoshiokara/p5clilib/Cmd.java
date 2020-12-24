@@ -2,7 +2,7 @@ package ikanoshiokara.p5clilib;
 
 /*
 * @author kota-shiokara
-* @version 0.3.0
+* @version 0.4.0
 */
 
 import java.lang.reflect.Constructor;

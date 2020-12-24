@@ -3,6 +3,9 @@ processingでCLIもどきを作るためのライブラリ
 
 現在鋭意開発中
 
+## USE
+使用する場合は[こちら](https://github.com/kota-shiokara/processingCliTest)をご使用ください。  
+
 ## Author
 - [kota-shiokara](https://github.com/kota-shiokara)
 - Email: ikanoshiokara.fun@gmail.com

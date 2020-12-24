@@ -127,9 +127,9 @@ public class Commander implements ListSegments, Kirby, PrintWorkingDirectory, Cu
 
     //TODO:移動できない問題を解決する
     //region CurrentDirectory
-    /*public String cd(){
-        return
-    }*/
+    public String cd(){
+        return "directory is null, please select directory";
+    }
 
     public String cdWithOption(String options){
         String[] parseOptions;
@@ -141,7 +141,7 @@ public class Commander implements ListSegments, Kirby, PrintWorkingDirectory, Cu
         }
         //ルートディレクトリによる絶対パスの時
         for (String option: parseOptions){
-            if(option.startsWith("C:/") || option.startsWith("/")){
+            if(option.equals("C:/") || option.equals("/")){
                 return option + "\n" + "";
             }
         }
