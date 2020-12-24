@@ -125,7 +125,6 @@ public class Commander implements ListSegments, Kirby, PrintWorkingDirectory, Cu
     }
     //endregion
 
-    //TODO:移動できない問題を解決する
     //region CurrentDirectory
     public String cd(){
         return "directory is null, please select directory";
@@ -157,14 +156,23 @@ public class Commander implements ListSegments, Kirby, PrintWorkingDirectory, Cu
                 for(String md: moveDirectory){
                     if(md.equals("..")){
                         if(current.lastIndexOf("/") != 0 && current.lastIndexOf("C:/") != 2){
-                            current = current.substring(0, current.lastIndexOf("/"));
+                            current = current.substring(0, current.lastIndexOf("/") + 1);
                         }
                     }else{
-                        String tmp = current;
-                        current += "/" + md;
-                        if(ls().startsWith("Error")){
-                            current = tmp;
-                            return current + "\n" + md + ": No such file or directory";
+                        if(current.lastIndexOf("/") != 0 && current.lastIndexOf("C:/") != 2){
+                            String tmp = current;
+                            current += md;
+                            if(ls().startsWith("Error")){
+                                current = tmp;
+                                return current + "\n" + md + ": No such file or directory";
+                            }
+                        }else{
+                            String tmp = current;
+                            current += "/" + md;
+                            if(ls().startsWith("Error")){
+                                current = tmp;
+                                return current + "\n" + md + ": No such file or directory";
+                            }
                         }
                     }
                 }

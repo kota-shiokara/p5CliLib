@@ -2,7 +2,7 @@ package ikanoshiokara.p5clilib;
 
 /*
 * @author kota-shiokara
-* @version 0.4.0
+* @version 0.5.1
 */
 
 import java.lang.reflect.Constructor;
@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public class Cmd{
     private String currentDirectory;
-    private final String VERSION = "v0.4.0";
+    private final String VERSION = "v0.5.1";
 
     public Cmd(String firstDirectory){
         this.currentDirectory = firstDirectory;
