@@ -1,7 +1,7 @@
 # p5CliLib
 processingでCLIもどきを作るためのライブラリ  
 
-現在鋭意開発中
+開発意欲がなくなったのでアーカイブ
 
 ## USE
 使用する場合は[こちら](https://github.com/kota-shiokara/processingCliTest)をご使用ください。  
